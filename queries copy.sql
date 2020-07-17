@@ -230,8 +230,8 @@ ON (de.dept_no = d.dept_no)
 WHERE d.dept_name IN ('Sales', 'Development');
 
 
-
 -- START OF MODULE 7 CHALLENGE WORK
+
 
 -- MODULE 7, PART 1
 -- List of retiring employees grouped by title
@@ -250,26 +250,6 @@ ON (ri.emp_no = s.emp_no)
 INNER JOIN dept_emp as de
 ON (ri.emp_no = de.emp_no)
 ORDER BY ti.title, ri.last_name, ri.first_name;
-
--- Partition the data to show only most recent title per employee
-SELECT emp_no,
- first_name,
- last_name,
- salary,
- title
-INTO ret_emp_recent_title
-FROM 
- (SELECT emp_no,
- first_name,
- last_name,
- salary,
- title, ROW_NUMBER() OVER
- (PARTITION BY (emp_no)
- -- Changed ORDER BY from 'to_date' to 'from_date' because prompt did not request 'to_date'
-  ORDER BY from_date DESC) rn
- FROM ret_emp_title
- ) tmp WHERE rn = 1
-ORDER BY emp_no;
 
 --Check if new table still has duplicates
 SELECT
@@ -293,32 +273,15 @@ GROUP BY
   emp_no
 HAVING count(*) > 1;
 
---Check if new table still has duplicates
-SELECT
-  emp_no,
-  count(*)
-FROM ret_emp_recent_title
-GROUP BY
-  emp_no
-HAVING count(*) > 1;
-
 -- Create one table showing number of [titles] retiring
 SELECT
-	COUNT (DISTINCT title) as "Number of Titles with Pending Retirees"
---INTO count_unique_titles_ret
+	COUNT (DISTINCT title)
+INTO count_unique_titles_ret
 FROM ret_emp_recent_title;
 
--- Create one table showing number of employees with each title
-SELECT
-	title as "Title",
-    COUNT (title) as "Number of Pending Retirees"
-INTO count_ret_by_title
-FROM ret_emp_recent_title
-GROUP BY title
-ORDER BY title ASC;
 
 
--- MODULE 7, PART 2
+-- MODULE 7, PART 1
 -- Method 1: Joining 3 tables to create desired table of mentorship-eligible current employees. Returns 2382 records.
 SELECT e.emp_no,
 	e.first_name,
@@ -336,7 +299,7 @@ WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 AND de.to_date = ('9999-01-01')
 ORDER BY e.emp_no;
 
--- Partition the data to show only most recent title per employee. 
+-- Partition the data to show only most recent title per employee. Returns 1549 records.
 SELECT emp_no,
  first_name,
  last_name,
@@ -366,23 +329,6 @@ GROUP BY
   emp_no
 HAVING count(*) > 1;
 
--- Create one table showing number of [titles] retiring
-SELECT
-	COUNT (DISTINCT title) as "Number of Distinct Titles Retiring"
-INTO count_unique_titles_ret
-FROM ret_emp_recent_title;
-
--- Create one table showing number of employees with each title
-SELECT
-	title as "Title",
-	COUNT (title) as "Number of Employees Retiring"
-INTO count_titles_ret_emp
-FROM
-	ret_emp_recent_title
-GROUP BY
-	title
-ORDER BY title ASC;
-
 
 -- Method 2: Completing the task in 1 step by using to_date from title. Returns 1549 records.
 SELECT e.emp_no,
@@ -407,4 +353,3 @@ FROM mentorship_elig_1step
 GROUP BY
   emp_no
 HAVING count(*) > 1;
-
