@@ -6,7 +6,8 @@ This analysis was completed in response to the need for Pewlett Hackard to plan 
 
 The original analyisis was conducted using six source csv files. Prior to any data manipulation the connecitons between the tables were charted out as an entity relatinship diagram. See the file ```EmployeeDB.png``` or Figure 1.
 
-Figure 1. Entity relationship diagram for the source data.
+![ERD](/EmployeeDB.png)  
+Figure 1. Entity relationship diagram for the source data.  
 
  The analysis in covered in this document builds on the previous analysis in two ways. First, if provides another way of slicing the data, namely by position type. Second, building off an initiative to assist with the transition of new vacancies of a large swatch of employees, this analysis looks beyond the retirement and identifies the eligible class of candidates for mentorship.
 
@@ -22,11 +23,13 @@ Using the table ```retirment_info```, which had been created in previous analysi
 
 Two other tables were requested. Both of these tables could be derived from ```ret_emp_recent_title```. The first of these reqested tables indicated the requirement that it be "showing number of [titles] retiring [sic]." The interpretation of the statement was that this was a simple request for the number of unique titles from which there would be impending retirements. What was requested could be presented as an integer but is, instead, being presented as Table 1 and ```count_unique_titles_ret.csv```. Table 1 was created using the ```COUNT``` and ```DISTINCT``` operators.
 
-Table 1.
+![Table 1](/README Images/count_unique_titles_ret.png)  
+Table 1. Retirements will come from seven unique job titles. 
 
 The other requested table that was derived from ```ret_emp_recent_title``` reflects the number of employees by position who will be eligible for retirement. This table used ```GROUP BY``` on the ```title``` column in conjunction with ```COUNT``` to provide a tally of those titles. The findings are presented in Table 2 and ```count_unique_titles_ret.csv```.
 
-Table 2.
+![Table 2](/README Images/count_ret_by_title.pngg)
+Table 2. Impending retirements by job title.
 
 ### Part 2. Mentorship Eligibilty
 
