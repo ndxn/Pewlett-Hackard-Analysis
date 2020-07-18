@@ -283,7 +283,7 @@ HAVING count(*) > 1;
 -- Create one table showing number of [titles] retiring
 SELECT
 	COUNT (DISTINCT title) as "Number of Titles with Pending Retirees"
---INTO count_unique_titles_ret
+INTO count_unique_titles_ret
 FROM ret_emp_recent_title;
 
 -- Create one table showing number of employees with each title
