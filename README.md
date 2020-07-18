@@ -46,4 +46,4 @@ The data processing accomplished in this challenge will assist higher ups in the
 
 Pewlett Hackard will have quite a bit of hiring in the future. It is beneficial that management has considered the mentorship program. Knowing the number of individuals eligible will help with utilizaiton planning as well as planning for the rehiring of retirees as mentors. With only 1549 eligible mentees, however, it seems like management will need to expand eligibily.
 
-In order to devise a more comprehensive transion plan, managaers should look downstream on the promotion pipeline. It will be useful to know how many in-house junior employees are avaiable for promotion. This knowledge will be practically useful in determining the amount of outside vs inside hiring will be needed.
+In order to devise a more comprehensive transion plan, managaers should look downstream on the promotion pipeline. It will be useful to know how many in-house junior employees are avaiable for promotion. This knowledge will be practically useful in determining the amount of outside vs inside hiring will be needed  .
