@@ -6,6 +6,7 @@ This analysis was completed in response to the need for Pewlett Hackard to plan 
 
 The original analyisis was conducted using six source csv files. Prior to any data manipulation the connecitons between the tables were charted out as an entity relatinship diagram. See the file ```EmployeeDB.png``` or Figure 1.
 
+![ERD](/EmployeeDB.png)
 Figure 1. Entity relationship diagram for the source data.
 
  The analysis in covered in this document builds on the previous analysis in two ways. First, if provides another way of slicing the data, namely by position type. Second, building off an initiative to assist with the transition of new vacancies of a large swatch of employees, this analysis looks beyond the retirement and identifies the eligible class of candidates for mentorship.
